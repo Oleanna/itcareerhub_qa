@@ -24,7 +24,7 @@ def driver():
     yield driver
     driver.quit()
 
-def test_about_page(driver):
+def test_payment_block(driver):
     driver.get(URL)
     driver.find_element(*PAYMENT_LINK).click()
     assert driver.find_element(*CONSULT_BUTTON).is_displayed()
