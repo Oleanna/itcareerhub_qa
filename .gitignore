@@ -6,3 +6,4 @@ __pycache__/
 *.sql
 *.db
 lessons/
+allure-results/

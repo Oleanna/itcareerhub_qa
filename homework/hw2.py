@@ -29,3 +29,4 @@ def test_payment_block(driver):
     driver.find_element(*PAYMENT_LINK).click()
     assert driver.find_element(*CONSULT_BUTTON).is_displayed()
     driver.find_element(*PAYMENT_BLOCK).screenshot(str(SCREENSHOT_DIR/f"payment_block_{date_str}.png"))
+

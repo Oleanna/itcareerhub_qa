@@ -17,3 +17,12 @@ class BasePage:
 
     def is_displayed(self, locator):
         return self.find(locator).is_displayed()
+
+    def get_text(self, locator):
+        return self.wait.until(EC.visibility_of_element_located(locator)).text
+
+    def input_text(self, locator, value):
+        return self.wait.until(EC.visibility_of_element_located(locator)).send_keys(value)
+
+    def get_alt_attribute_by_index(self, locator, index):
+        return self.driver.find_elements(*locator)[index].get_attribute("alt")
