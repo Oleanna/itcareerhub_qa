@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -15,6 +16,9 @@ class BasePage:
     def find(self, locator):
         return self.wait.until(EC.presence_of_element_located(locator))
 
+    def find_all(self, locator):
+        return self.wait.until(EC.presence_of_all_elements_located(locator))
+
     def is_displayed(self, locator):
         return self.find(locator).is_displayed()
 
@@ -26,3 +30,10 @@ class BasePage:
 
     def get_alt_attribute_by_index(self, locator, index):
         return self.driver.find_elements(*locator)[index].get_attribute("alt")
+
+    def switch_to_frame(self, locator):
+        iframe = self.find(locator)
+        self.driver.switch_to.frame(iframe)
+
+    def drag_and_drop(self, locator_what, locator_where):
+        ActionChains(self.driver).drag_and_drop(locator_what, locator_where).perform()
